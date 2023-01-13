@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/productLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="10dp"
+            android:textColor="#6B4BAC"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/productImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productLink"
+            app:srcCompat="@drawable/safolaimage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="10dp"
+            android:text="₹ 199"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintTop_toBottomOf="@+id/productLink" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rattingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:progressBackgroundTint="@color/gray_color"
+            android:progressTint="#FF9500"
+            android:rating="5"
+            android:shadowColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/productPrice"
+            app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/sourceImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/rattingBar"
+            app:layout_constraintTop_toBottomOf="@+id/rattingBar"
+            app:srcCompat="@drawable/safolaimage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sourceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="12sp"
+            android:text="Flipkart"
+            android:textColor="#5F9C8E"
+            app:layout_constraintBottom_toBottomOf="@+id/sourceImage"
+            app:layout_constraintStart_toEndOf="@+id/sourceImage"
+            app:layout_constraintTop_toTopOf="@+id/sourceImage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
