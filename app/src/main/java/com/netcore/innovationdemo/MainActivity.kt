@@ -7,10 +7,13 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.netcore.innovationdemo.databinding.ActivityMainBinding
 import com.netcore.innovationdemo.databinding.CompareLayoutBinding
 import com.netcore.innovationdemo.model.CompareDataModel
 import dagger.hilt.android.AndroidEntryPoint
+import org.json.JSONObject
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -30,8 +33,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun consumeResponse(it: CompareDataModel?) {
-     compareDataAdapter.setData(it?.compareResultList!!)
+    private fun consumeResponse(it: JsonElement?) {
+
+     compareDataAdapter.setData(it!!)
         val bottomsheetDialog = BottomSheetDialog(this)
         val dialogBinding = DataBindingUtil.inflate<CompareLayoutBinding>(
             LayoutInflater.from(this),
