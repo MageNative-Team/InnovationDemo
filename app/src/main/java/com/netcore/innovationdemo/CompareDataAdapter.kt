@@ -40,16 +40,16 @@ class CompareDataAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: CompareDataViewHolder, position: Int) {
-        holder.binding.productLink.text = (compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject["title"].asString
-        holder.binding.productPrice.text ="₹ "+(compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject.get("source_price").asString
+        holder.binding.productLink.text = (compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject["title"].asString
+        holder.binding.productPrice.text ="₹ "+(compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject.get("source_price").asString
         Glide.with(holder.binding.productPrice.context)
-            .load((compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject.get("image").asString)
+            .load((compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject.get("image").asString)
             .into(holder.binding.productImage)
         Glide.with(holder.binding.productPrice.context)
-            .load((compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject.get("source_logo").asString)
+            .load((compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject.get("source_logo").asString)
             .into(holder.binding.sourceImage)
-        holder.binding.sourceName.text =(compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject.get("source_name").asString
-        holder.binding.rattingBar.rating =(compareDataModel as JsonObject).get("data").asJsonArray.get(0).asJsonObject.get("source_rating").asString.toFloat()
+        holder.binding.sourceName.text =(compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject.get("source_name").asString
+        holder.binding.rattingBar.rating =(compareDataModel as JsonObject).get("data").asJsonArray.get(position).asJsonObject.get("source_rating").asString.toFloat()
     }
 
     override fun getItemCount(): Int {

@@ -3,6 +3,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:padding="10dp"
+        android:background="@color/white"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -68,6 +70,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/sourceImage"
             app:layout_constraintStart_toEndOf="@+id/sourceImage"
             app:layout_constraintTop_toTopOf="@+id/sourceImage" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sourceImage"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray_color"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
