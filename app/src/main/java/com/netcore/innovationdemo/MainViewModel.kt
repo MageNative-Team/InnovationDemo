@@ -3,11 +3,8 @@ package com.netcore.innovationdemo
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
 import com.google.gson.JsonElement
-import com.netcore.innovationdemo.model.CompareDataModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

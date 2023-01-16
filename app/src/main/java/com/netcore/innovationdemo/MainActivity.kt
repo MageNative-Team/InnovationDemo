@@ -1,19 +1,17 @@
 package com.netcore.innovationdemo
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import com.netcore.innovationdemo.databinding.ActivityMainBinding
 import com.netcore.innovationdemo.databinding.CompareLayoutBinding
-import com.netcore.innovationdemo.model.CompareDataModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.json.JSONObject
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -24,11 +22,16 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var compareDataAdapter: CompareDataAdapter
 
+    lateinit var progressDialog:ProgressDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         model.searchresult.observe(this, Observer { this.consumeResponse(it) })
+        progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Loading...")
         binding?.compareBut?.setOnClickListener {
+            progressDialog.show()
             model.getSearchResult("Fitness Essential Oil Blend")
         }
     }
@@ -36,7 +39,8 @@ class MainActivity : AppCompatActivity() {
     private fun consumeResponse(it: JsonElement?) {
 
      compareDataAdapter.setData(it!!)
-        val bottomsheetDialog = BottomSheetDialog(this)
+        val bottomsheetDialog = BottomSheetDialog(this,R.style.WideDialog)
+        bottomsheetDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         val dialogBinding = DataBindingUtil.inflate<CompareLayoutBinding>(
             LayoutInflater.from(this),
             R.layout.compare_layout,
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         bottomsheetDialog.setContentView(dialogBinding.root)
         dialogBinding.compairList.adapter = compareDataAdapter
         bottomsheetDialog.show()
+        progressDialog.dismiss()
     }
 
 }
